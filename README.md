@@ -1,4 +1,4 @@
-# PampaNet Web Shooters
+# PampaNet Web Shooters [![Build Status](https://travis-ci.org/pabiagioli/webshooters.svg?branch=master)](https://travis-ci.org/pabiagioli/webshooters)
 Web Framework for developing Secure Java WebApps
 
 Dependencies included
