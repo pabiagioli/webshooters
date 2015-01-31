@@ -24,21 +24,39 @@ public class BootstrapRestPackagesModule extends AbstractModule {
 
     private static final XLogger logger = XLoggerFactory.getXLogger(BootstrapRestPackagesModule.class);
 
-    protected static final String SCAN_REST_PACKAGES_PROPERTY = "com.pampanet.mate.config.rest.pkgs";
+    private static final String DEFAULT_SCAN_REST_PACKAGES_PROPERTY = "com.pampanet.webshooters.config.rest.pkgs";
 
-    protected static final String DEFAULT_REST_PACKAGE_TO_SCAN = "com.pampanet.mate.rest";
+    private static final String DEFAULT_REST_PACKAGE_TO_SCAN = "com.pampanet.webshooters.rest";
 
-    protected static final String MATE_REST_CONFIG_PROPERTIES_FILE = "/webshooters-rest-config.properties";
+    private static final String DEFAULT_REST_CONFIG_PROPERTIES_FILE = "/webshooters-rest-config.properties";
 
+    private static final String COMMA = ",";
+
+    private String packagesToScanKey = DEFAULT_SCAN_REST_PACKAGES_PROPERTY;
+    private String propertiesFileName = DEFAULT_REST_CONFIG_PROPERTIES_FILE;
+
+    public BootstrapRestPackagesModule(){
+        this(DEFAULT_SCAN_REST_PACKAGES_PROPERTY,DEFAULT_SCAN_REST_PACKAGES_PROPERTY);
+    }
+
+    /**
+     * Constructor with given properties file name and given key to retrieve
+     * @param properties file name
+     * @param pkg_key key to retrieve in properties file
+     */
+    public BootstrapRestPackagesModule(String properties, String pkg_key){
+        propertiesFileName = properties;
+        packagesToScanKey = pkg_key;
+    }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     protected void configure() {
         logger.entry();
 
-        String[] pkgs = getMateConfigProperties().getProperty(
-                SCAN_REST_PACKAGES_PROPERTY, DEFAULT_REST_PACKAGE_TO_SCAN)
-                .split(",");
+        String[] pkgs = getWebShootersConfigProperties().getProperty(
+                getPackagesToScanKey(), DEFAULT_REST_PACKAGE_TO_SCAN)
+                .split(COMMA);
 
         for (String pkg : pkgs) {
             logger.info("found RESTful package: {}", pkg.trim());
@@ -129,11 +147,11 @@ public class BootstrapRestPackagesModule extends AbstractModule {
         return classes;
     }
 
-    private Properties getMateConfigProperties() {
+    private Properties getWebShootersConfigProperties() {
         Properties bootstrapProperties = new Properties();
 
         try {
-            InputStream is = getClass().getResourceAsStream(MATE_REST_CONFIG_PROPERTIES_FILE);
+            InputStream is = getClass().getResourceAsStream(getPropertiesFileName());
             bootstrapProperties.load(is);
         } catch (Exception e) {
             logger.throwing(e);
@@ -142,4 +160,11 @@ public class BootstrapRestPackagesModule extends AbstractModule {
         return bootstrapProperties;
     }
 
+    public String getPackagesToScanKey() {
+        return packagesToScanKey;
+    }
+
+    public String getPropertiesFileName() {
+        return propertiesFileName;
+    }
 }

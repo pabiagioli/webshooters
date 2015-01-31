@@ -19,27 +19,44 @@ import java.util.Properties;
  */
 public class BootstrapPropertiesModule extends AbstractModule {
 
-    private XLogger logger = XLoggerFactory.getXLogger(this.getClass());
-
-    protected static String BOOTSTRAP_PROPERTIES_FILE = "webshooters-config.properties";
+    private static final XLogger logger = XLoggerFactory.getXLogger(BootstrapPropertiesModule.class);
+    private static final String DEFAULT_BOOTSTRAP_PROPERTIES_FILE = "webshooters-config.properties";
     private static final String SLASH = System.getProperty("file.separator");
+
+    private String bootstrapPropertiesFile = DEFAULT_BOOTSTRAP_PROPERTIES_FILE;
+
+    /**
+     * Default no-arg constructor will use default values
+     */
+    public BootstrapPropertiesModule(){
+        this(DEFAULT_BOOTSTRAP_PROPERTIES_FILE);
+    }
+
+    /**
+     * Constructor with custom properties file
+     * @param properties file name
+     */
+    public BootstrapPropertiesModule(String properties){
+        assert properties != null;
+        this.bootstrapPropertiesFile = properties;
+    }
 
     @Override
     protected void configure() {
         logger.entry();
         Properties bootstrapProperties = new Properties();
         try {
-            InputStream is = getClass().getResourceAsStream(SLASH + BOOTSTRAP_PROPERTIES_FILE);
+            InputStream is = getClass().getResourceAsStream(SLASH + getBootstrapPropertiesFile());
             bootstrapProperties.load(is);
             Names.bindProperties(binder(), bootstrapProperties);
-        } catch (FileNotFoundException e) {
-            logger.error("The configuration file " + BOOTSTRAP_PROPERTIES_FILE + " can not be found");
-            logger.throwing(e);
         } catch (IOException e) {
-            logger.error("I/O Exception during loading configuration");
+            logger.error("I/O Exception during configuration loading");
             logger.throwing(e);
         }
         logger.exit();
     }
 
+    public String getBootstrapPropertiesFile() {
+        return bootstrapPropertiesFile;
+    }
 }

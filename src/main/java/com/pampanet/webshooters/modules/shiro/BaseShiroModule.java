@@ -18,8 +18,9 @@ import javax.servlet.ServletContext;
  */
 public class BaseShiroModule extends ShiroWebModule {
 
-    private static final String CREDENTIALS_MATCHER_ALGORITHM_NAME = "SHA-512";
-    protected final XLogger logger = XLoggerFactory.getXLogger(getClass());
+    private static final String DEFAULT_SHIRO_INI_REALM_RESOURCE = "classpath:shiro.ini";
+
+    final XLogger logger = XLoggerFactory.getXLogger(getClass());
 
     public BaseShiroModule(ServletContext servletContext) {
         super(servletContext);
@@ -57,7 +58,7 @@ public class BaseShiroModule extends ShiroWebModule {
     //@Singleton
     Ini loadDefaultShiroIni() {
         logger.entry();
-        Ini result = Ini.fromResourcePath("classpath:shiro.ini");
+        Ini result = Ini.fromResourcePath(DEFAULT_SHIRO_INI_REALM_RESOURCE);
         logger.exit(result);
         return result;
     }

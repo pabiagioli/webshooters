@@ -33,7 +33,6 @@ public class DefaultServletContextListener extends GenericGuiceRestEasyContextLi
     @Override
     public void contextInitialized(ServletContextEvent event) {
         logger.entry(event);
-        context = event.getServletContext();
         super.contextInitialized(event);
         logger.exit(event);
     }
@@ -42,7 +41,7 @@ public class DefaultServletContextListener extends GenericGuiceRestEasyContextLi
     protected void withInjector(Injector injector) {
         logger.entry(injector);
         super.withInjector(injector);
-        context.setAttribute(INJECTOR_NAME, injector);
+        getServletContext().setAttribute(INJECTOR_NAME, injector);
         logger.exit(injector);
     }
 }

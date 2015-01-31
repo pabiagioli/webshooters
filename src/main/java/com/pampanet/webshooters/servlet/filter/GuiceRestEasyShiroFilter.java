@@ -10,7 +10,7 @@ import org.slf4j.ext.XLoggerFactory;
 /**
  * Extend this ShiroFilter with Servlet 3.x annotations like the following:<br><br>
  *
- * @WebFilter(asyncSupported=true, value="/*", filterName="shiroFilter", initParams=@WebInitParam(name="staticSecurityManagerEnabled", value="true"))<br>
+ * '@WebFilter(asyncSupported=true, value="/*", filterName="shiroFilter", initParams=@WebInitParam(name="staticSecurityManagerEnabled", value="true"))'<br>
  * public class myShiroFilter extends GuiceRestEasyShiroFilter{...}
  * <br>
  * <p>For Shiro Annotations to work properly you need to place this filter in the first position of the filterChain via web.xml</p>
@@ -18,7 +18,7 @@ import org.slf4j.ext.XLoggerFactory;
  * @author pampa
  */
 public class GuiceRestEasyShiroFilter extends AbstractShiroFilter {
-    private XLogger logger = XLoggerFactory.getXLogger(GuiceRestEasyShiroFilter.class);
+    private final XLogger logger = XLoggerFactory.getXLogger(GuiceRestEasyShiroFilter.class);
 
     private Injector injector;
 
