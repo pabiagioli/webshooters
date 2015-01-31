@@ -41,6 +41,35 @@ Requirements
  - Filter SubType of [GuiceRestEasyShiroFilter.java](https://github.com/pabiagioli/webshooters/blob/master/src/main/java/com/pampanet/webshooters/servlet/filter/GuiceRestEasyShiroFilter.java)
  - Filter SubType of [GuiceRestEasyFilterDispatcher.java](https://github.com/pabiagioli/webshooters/blob/master/src/main/java/com/pampanet/webshooters/servlet/filter/GuiceRestEasyFilterDispatcher.java)
 
+### Example
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<display-name>Secure Async Webapp Project</display-name>
+  <listener>
+  	<listener-class>com.pampanet.webshooters.config.DefaultServletContextListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>shiroFilter</filter-name>
+    <filter-class>com.pampanet.webshooters.servlet.filter.GuiceRestEasyShiroFilter</filter-class>
+    <async-supported>true</async-supported>
+  </filter>
+  <filter-mapping>
+    <filter-name>shiroFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+   <filter-name>restEasyFilter</filter-name>
+   <filter-class>com.pampanet.webshooters.servlet.filter.GuiceRestEasyFilterDispatcher</filter-class>
+   <async-supported>true</async-supported>
+  </filter>
+  <filter-mapping>
+   <filter-name>restEasyFilter</filter-name>
+   <url-pattern>/*</url-pattern>
+  </filter-mapping>
+</web-app>
+```
+
 ##License
 - Apache 2.0 License
 

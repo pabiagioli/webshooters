@@ -36,7 +36,7 @@ public class BootstrapRestPackagesModule extends AbstractModule {
     private String propertiesFileName = DEFAULT_REST_CONFIG_PROPERTIES_FILE;
 
     public BootstrapRestPackagesModule(){
-        this(DEFAULT_SCAN_REST_PACKAGES_PROPERTY,DEFAULT_SCAN_REST_PACKAGES_PROPERTY);
+        this(DEFAULT_REST_CONFIG_PROPERTIES_FILE,DEFAULT_SCAN_REST_PACKAGES_PROPERTY);
     }
 
     /**
