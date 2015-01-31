@@ -1,4 +1,7 @@
-# PampaNet Web Shooters [![Build Status](https://travis-ci.org/pabiagioli/webshooters.svg?branch=master)](https://travis-ci.org/pabiagioli/webshooters) [![Coverage Status](https://coveralls.io/repos/pabiagioli/webshooters/badge.svg)](https://coveralls.io/r/pabiagioli/webshooters) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.pampanet/webshooters/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.pampanet/webshooters/)
+# PampaNet Web Shooters 
+[![Build Status](https://travis-ci.org/pabiagioli/webshooters.svg?branch=master)](https://travis-ci.org/pabiagioli/webshooters) 
+[![Coverage Status](https://coveralls.io/repos/pabiagioli/webshooters/badge.svg)](https://coveralls.io/r/pabiagioli/webshooters) 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.pampanet/webshooters/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.pampanet/webshooters/)
 
 Web Framework for developing Secure Java WebApps
 
