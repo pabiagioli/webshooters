@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/pabiagioli/webshooters/badge.svg)](https://coveralls.io/r/pabiagioli/webshooters) 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.pampanet/webshooters/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.pampanet/webshooters/)
 
-Web Framework for developing Secure Java WebApps
+Web Framework for developing Secure Java Web Services
 
 Dependencies included
 ---------------------
