@@ -47,7 +47,7 @@
         <!-- Main Dependencies Versions -->
         <version.jdk>1.8</version.jdk>
         <version.servlet>3.1.0</version.servlet>
-        <version.resteasy>3.0.9.Final</version.resteasy>
+        <version.resteasy>3.0.10.Final</version.resteasy>
         <version.guice>3.0</version.guice>
         <version.shiro>1.2.3</version.shiro>
 
